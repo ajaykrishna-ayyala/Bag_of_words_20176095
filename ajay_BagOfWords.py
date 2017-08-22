@@ -1,5 +1,4 @@
 import os.path
-import string
 path=input("Enter the path of dir")
 Listy=os.listdir(path)
 print(Listy)
@@ -9,9 +8,12 @@ os.chdir(path)
 def plagiarism(f1,f2):
     def convert(s):
         s=s.lower()
+        c="abcdefghijklmnopqrstuvxxyz_0123456789"
+        for i in s:
+            if i not in c:
+                s=s.replace(i," ")
         s=s.replace("\n"," ").replace("\xa0"," ")
         s=s.split(" ")
-        s=[i.strip(string.punctuation) for i in s]
         return s
     s1=convert(f1.read())
     s2=convert(f2.read())
